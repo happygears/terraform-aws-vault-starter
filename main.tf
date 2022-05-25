@@ -26,7 +26,8 @@ module "loadbalancer" {
   common_tags           = var.common_tags
   lb_certificate_arn    = var.lb_certificate_arn
   lb_health_check_path  = var.lb_health_check_path
-  lb_subnets            = module.networking.vault_subnet_ids
+  lb_subnets            = var.public_subnet_tags == null ? module.networking.vault_subnet_ids : module.networking-public.vault_subnet_ids
+  lb_internal           = var.public_subnet_tags == null
   lb_type               = var.lb_type
   resource_name_prefix  = var.resource_name_prefix
   ssl_policy            = var.ssl_policy
@@ -38,6 +39,13 @@ module "networking" {
   source = "./modules/networking"
 
   private_subnet_tags = var.private_subnet_tags
+  vpc_id              = var.vpc_id
+}
+
+module "networking-public" {
+  source = "./modules/networking"
+
+  private_subnet_tags = var.public_subnet_tags
   vpc_id              = var.vpc_id
 }
 

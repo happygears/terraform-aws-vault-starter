@@ -72,6 +72,12 @@ variable "private_subnet_tags" {
   description = "Tags which specify the subnets to deploy Vault into"
 }
 
+variable "public_subnet_tags" {
+  type        = map(string)
+  description = "Tags which specify the subnets to deploy public LB into. Default - make LB private"
+  default = null
+}
+
 variable "resource_name_prefix" {
   type        = string
   description = "Resource name prefix used for tagging and naming AWS resources"

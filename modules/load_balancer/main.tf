@@ -39,7 +39,7 @@ locals {
 
 resource "aws_lb" "vault_lb" {
   name                       = "${var.resource_name_prefix}-vault-lb"
-  internal                   = true
+  internal                   = var.lb_internal
   load_balancer_type         = var.lb_type
   subnets                    = var.lb_subnets
   security_groups            = local.lb_security_groups

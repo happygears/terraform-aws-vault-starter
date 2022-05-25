@@ -26,8 +26,14 @@ variable "lb_subnets" {
 }
 
 variable "lb_type" {
-  description = "The type of load balancer to provison: network or application."
+  description = "The type of load balancer to provision: network or application."
   type        = string
+}
+
+variable "lb_internal" {
+  description = "Make load balancer internal or public."
+  type        = bool
+  default     = true
 }
 
 variable "resource_name_prefix" {
