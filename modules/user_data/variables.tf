@@ -33,3 +33,9 @@ variable "vault_version" {
   type        = string
   description = "Vault version"
 }
+
+variable "snapshots_bucket_id" {
+  type = string
+  description = "(OPTIONAL) S3 bucket ID for snapshots"
+  default = "NOT_EXISTENT_BUCKET"
+}

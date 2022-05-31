@@ -110,3 +110,27 @@ data "aws_iam_policy_document" "secrets_manager" {
     ]
   }
 }
+
+resource "aws_iam_role_policy" "snapshots" {
+  name   = "${var.resource_name_prefix}-vault-snapshots"
+  role   = aws_iam_role.instance_role[0].id
+  policy = data.aws_iam_policy_document.snapshots.json
+}
+
+data "aws_iam_policy_document" "snapshots" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "s3:ListBucketVersions",
+      "s3:ListBucket",
+      "s3:PutObject",
+      "s3:GetObject",
+    ]
+
+    resources = [
+      var.snapshots_bucket_arn,
+      "${var.snapshots_bucket_arn}/*"
+    ]
+  }
+}

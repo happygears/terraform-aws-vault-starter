@@ -75,7 +75,7 @@ variable "private_subnet_tags" {
 variable "public_subnet_tags" {
   type        = map(string)
   description = "Tags which specify the subnets to deploy public LB into. Default - make LB private"
-  default = null
+  default     = null
 }
 
 variable "resource_name_prefix" {
@@ -127,4 +127,10 @@ variable "vault_version" {
 variable "vpc_id" {
   type        = string
   description = "VPC ID where Vault will be deployed"
+}
+
+variable "enable_snapshots" {
+  type        = bool
+  description = "Create S3 bucket for snapshots and configure raft snapshot agent?"
+  default     = false
 }

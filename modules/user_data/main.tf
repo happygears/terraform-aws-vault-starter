@@ -8,6 +8,7 @@ locals {
       kms_key_arn           = var.kms_key_arn
       secrets_manager_arn   = var.secrets_manager_arn
       leader_tls_servername = var.leader_tls_servername
+      snapshots_bucket_id   = var.snapshots_bucket_id
     }
   )
 }
