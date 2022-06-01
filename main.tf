@@ -105,4 +105,13 @@ module "snapshots" {
   versioning = {
     enabled = true
   }
+  lifecycle_rule = [{
+    status = "Enabled"
+    id     = "expire-old-snapshots"
+    # delete if objects are older than noncurrent_days but keep last newer_noncurrent_versions
+    noncurrent_version_expiration = {
+      noncurrent_days           = var.snapshot_retention_days
+      newer_noncurrent_versions = var.snapshots_keep_expired
+    }
+  }]
 }

@@ -134,3 +134,15 @@ variable "enable_snapshots" {
   description = "Create S3 bucket for snapshots and configure raft snapshot agent?"
   default     = false
 }
+
+variable "snapshot_retention_days" {
+  type        = number
+  description = "Snapshot version retention: delete snapshot versions older than this many days"
+  default     = 7
+}
+
+variable "snapshots_keep_expired" {
+  type        = number
+  description = "NUmber of newest snapshot versions to keep even past expiration date"
+  default     = 0
+}
