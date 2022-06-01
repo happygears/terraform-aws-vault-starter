@@ -112,6 +112,7 @@ data "aws_iam_policy_document" "secrets_manager" {
 }
 
 resource "aws_iam_role_policy" "snapshots" {
+  count  = var.enable_snapshots ? 1 : 0
   name   = "${var.resource_name_prefix}-vault-snapshots"
   role   = aws_iam_role.instance_role[0].id
   policy = data.aws_iam_policy_document.snapshots.json

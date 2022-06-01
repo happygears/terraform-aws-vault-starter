@@ -8,7 +8,8 @@ module "iam" {
   resource_name_prefix        = var.resource_name_prefix
   secrets_manager_arn         = var.secrets_manager_arn
   user_supplied_iam_role_name = var.user_supplied_iam_role_name
-  snapshots_bucket_arn        = var.enable_snapshots ? module.snapshots.s3_bucket_arn : null
+  snapshots_bucket_arn        = module.snapshots.s3_bucket_arn
+  enable_snapshots            = var.enable_snapshots
 }
 
 module "kms" {
@@ -60,7 +61,7 @@ module "user_data" {
   secrets_manager_arn         = var.secrets_manager_arn
   user_supplied_userdata_path = var.user_supplied_userdata_path
   vault_version               = var.vault_version
-  snapshots_bucket_id         = var.enable_snapshots ? module.snapshots.s3_bucket_id : null
+  snapshots_bucket_id         = var.enable_snapshots ? module.snapshots.s3_bucket_id : ""
 }
 
 module "vm" {
@@ -90,6 +91,7 @@ module "snapshots" {
   create_bucket = var.enable_snapshots
   bucket_prefix = "${var.resource_name_prefix}-vault-snapshots"
   acl           = "private"
+  force_destroy = true
   tags          = var.common_tags
 
   server_side_encryption_configuration = {

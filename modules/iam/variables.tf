@@ -25,7 +25,13 @@ variable "user_supplied_iam_role_name" {
 }
 
 variable "snapshots_bucket_arn" {
-  type = string
+  type        = string
   description = "(OPTIONAL) S3 bucket ARN for snapshots"
-  default = "arn:aws:s3:::NOT_EXISTENT_BUCKET"
+  default     = "arn:aws:s3:::NOT_EXISTENT_BUCKET"
+}
+
+variable "enable_snapshots" {
+  type        = bool
+  description = "Configure IAM policy for snapshots?"
+  default     = false
 }
