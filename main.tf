@@ -82,6 +82,7 @@ module "vm" {
   vault_subnets             = module.networking.vault_subnet_ids
   vault_target_group_arn    = module.loadbalancer.vault_target_group_arn
   vpc_id                    = module.networking.vpc_id
+  volume_size               = var.node_volume_size
 }
 
 module "snapshots" {

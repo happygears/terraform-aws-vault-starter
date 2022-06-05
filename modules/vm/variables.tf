@@ -79,3 +79,9 @@ variable "vpc_id" {
   type        = string
   description = "VPC ID where Vault will be deployed"
 }
+
+variable "volume_size" {
+  type        = number
+  description = "Size of Vault volume to create (root volume)"
+  default     = 100
+}

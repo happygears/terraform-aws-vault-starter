@@ -146,3 +146,9 @@ variable "snapshots_keep_expired" {
   description = "NUmber of newest snapshot versions to keep even past expiration date"
   default     = 0
 }
+
+variable "node_volume_size" {
+  type        = number
+  description = "Size of Vault node volume to create (root volume) GB"
+  default     = 100
+}

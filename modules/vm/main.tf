@@ -152,7 +152,7 @@ resource "aws_launch_template" "vault" {
 
     ebs {
       volume_type           = "gp3"
-      volume_size           = 100
+      volume_size           = var.volume_size
       throughput            = 150
       iops                  = 3000
       delete_on_termination = true
