@@ -167,6 +167,16 @@ resource "aws_launch_template" "vault" {
     http_endpoint = "enabled"
     http_tokens   = "required"
   }
+
+  tag_specifications {
+    resource_type = "volume"
+    tags = merge(
+      {
+        Name = "${var.resource_name_prefix}-vault-server"
+      },
+      var.common_tags
+    )
+  }
 }
 
 resource "aws_autoscaling_group" "vault" {
