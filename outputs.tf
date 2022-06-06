@@ -29,3 +29,7 @@ output "vault_snapashots_bucket_id" {
 output "lb_listener_port" {
   value = var.lb_listener_port
 }
+
+output "vault_addr" {
+  value = "https://${var.leader_tls_servername}:${var.lb_listener_port}"
+}
