@@ -152,3 +152,9 @@ variable "node_volume_size" {
   description = "Size of Vault node volume to create (root volume) GB"
   default     = 100
 }
+
+variable "lb_listener_port" {
+  type        = number
+  description = "(Optional) Custom port number for load-balancer listener if different than 8200"
+  default     = 8200
+}

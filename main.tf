@@ -31,6 +31,7 @@ module "loadbalancer" {
   lb_subnets            = var.public_subnet_tags == null ? module.networking.vault_subnet_ids : module.networking-public.vault_subnet_ids
   lb_internal           = var.public_subnet_tags == null
   lb_type               = var.lb_type
+  lb_listener_port      = var.lb_listener_port
   resource_name_prefix  = var.resource_name_prefix
   ssl_policy            = var.ssl_policy
   vault_sg_id           = module.vm.vault_sg_id
