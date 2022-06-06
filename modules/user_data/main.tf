@@ -9,6 +9,7 @@ locals {
       secrets_manager_arn   = var.secrets_manager_arn
       leader_tls_servername = var.leader_tls_servername
       snapshots_bucket_id   = var.snapshots_bucket_id
+      lb_listener_port      = var.lb_listener_port
     }
   )
 }
