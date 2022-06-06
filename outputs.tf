@@ -25,3 +25,7 @@ output "vault_instance_role_arn" {
 output "vault_snapashots_bucket_id" {
   value = var.enable_snapshots ? module.snapshots.s3_bucket_id : ""
 }
+
+output "lb_listener_port" {
+  value = var.lb_listener_port
+}
