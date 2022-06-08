@@ -1,10 +1,19 @@
+# Get Instance details
+data "aws_ec2_instance_type" "ubuntu" {
+  instance_type = var.instance_type
+}
+
+locals {
+  instance_arch = contains(data.aws_ec2_instance_type.ubuntu.supported_architectures, "arm64") ? "arm64" : "amd64"
+}
+
 data "aws_ami" "ubuntu" {
   count       = var.user_supplied_ami_id != null ? 0 : 1
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-${local.instance_arch}-server-*"]
   }
 
   filter {
