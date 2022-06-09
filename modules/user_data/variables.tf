@@ -39,9 +39,3 @@ variable "snapshots_bucket_id" {
   description = "(OPTIONAL) S3 bucket ID for snapshots"
   default = "NOT_EXISTENT_BUCKET"
 }
-
-variable "lb_listener_port" {
-  type        = number
-  description = "(Optional) Custom port number for load-balancer listener if different than 8200"
-  default     = 8200
-}
