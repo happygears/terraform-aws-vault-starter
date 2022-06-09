@@ -152,6 +152,7 @@ resource "aws_launch_template" "vault" {
   instance_type = var.instance_type
   key_name      = var.key_name != null ? var.key_name : null
   user_data     = var.userdata_script
+  tags          = var.common_tags
   vpc_security_group_ids = [
     aws_security_group.vault.id,
   ]
