@@ -35,7 +35,13 @@ variable "vault_version" {
 }
 
 variable "snapshots_bucket_id" {
-  type = string
+  type        = string
   description = "(OPTIONAL) S3 bucket ID for snapshots"
-  default = "NOT_EXISTENT_BUCKET"
+  default     = "NOT_EXISTENT_BUCKET"
+}
+
+variable "vault_log_level" {
+  type        = string
+  description = "Vault server's log level"
+  default     = "info"
 }

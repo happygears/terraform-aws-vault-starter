@@ -63,6 +63,7 @@ module "user_data" {
   user_supplied_userdata_path = var.user_supplied_userdata_path
   vault_version               = var.vault_version
   snapshots_bucket_id         = var.enable_snapshots ? module.snapshots.s3_bucket_id : ""
+  vault_log_level             = var.vault_log_level
 }
 
 module "vm" {

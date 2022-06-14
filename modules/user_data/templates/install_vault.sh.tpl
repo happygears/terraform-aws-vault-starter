@@ -72,7 +72,7 @@ EOF
 
 # Define log level
 cat << EOF >> /etc/vault.d/vault.env
-VAULT_LOG_LEVEL=info
+VAULT_LOG_LEVEL=${vault_log_level}
 EOF
 
 # vault.hcl should be readable by the vault group only

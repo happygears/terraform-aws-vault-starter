@@ -158,3 +158,9 @@ variable "lb_listener_port" {
   description = "(Optional) Custom port number for load-balancer listener if different than 8200"
   default     = 8200
 }
+
+variable "vault_log_level" {
+  type        = string
+  description = "Vault server's log level"
+  default     = "info"
+}
