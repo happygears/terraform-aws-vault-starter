@@ -101,6 +101,7 @@ cat << SNAPSHOT > /usr/local/bin/vault-snapshot.sh
 source /etc/profile.d/vault.sh
 
 MYNAME=\$(basename "\$0")
+SNAP_NAME="\$${1:-raft.snap}"
 
 # Only run this on active node in a cluster
 vault status | grep -q Mode.*active || exit 0
@@ -117,7 +118,7 @@ fi
 rm -f /tmp/raft.snap /tmp/\$MYNAME.err
 vault operator raft snapshot save /tmp/raft.snap 2>/tmp/\$MYNAME.err && \
 aws --output=text s3api put-object --bucket ${snapshots_bucket_id} \
-  --key raft.snap --body /tmp/raft.snap \
+  --key "\$SNAP_NAME" --body /tmp/raft.snap \
   --tagging "customer=happygears&component=vault&environment=prod&source=terraform" 2>>/tmp/\$MYNAME.err >/tmp/\$MYNAME.out
 if test -s "/tmp/\$MYNAME.err"
 then
