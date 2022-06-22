@@ -11,6 +11,7 @@ curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
 apt-add-repository "deb [arch=$ARCH] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 apt-get update
 apt-get install -y vault=${vault_version} awscli jq
+apt-mark hold vault
 
 echo "Configuring system time"
 timedatectl set-timezone UTC
