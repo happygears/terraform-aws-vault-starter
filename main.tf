@@ -89,17 +89,19 @@ module "vm" {
 
 module "snapshots" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.2.3"
+  version = "3.15.1"
 
-  create_bucket           = var.enable_snapshots
-  bucket                  = "${var.resource_name_prefix}-vault-snapshots"
-  acl                     = "private"
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-  force_destroy           = true
-  tags                    = var.common_tags
+  create_bucket            = var.enable_snapshots
+  bucket                   = "${var.resource_name_prefix}-vault-snapshots"
+  acl                      = "private"
+  block_public_acls        = true
+  block_public_policy      = true
+  ignore_public_acls       = true
+  restrict_public_buckets  = true
+  force_destroy            = true
+  tags                     = var.common_tags
+  control_object_ownership = true
+  object_ownership         = "ObjectWriter"
 
   server_side_encryption_configuration = {
     rule = {
