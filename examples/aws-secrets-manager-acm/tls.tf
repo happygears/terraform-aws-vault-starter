@@ -22,6 +22,10 @@ resource "tls_self_signed_cert" "ca" {
 
   is_ca_certificate = true
 
+  lifecycle {
+    ignore_changes = [subject]
+  }
+
   #  provisioner "local-exec" {
   #    command = "echo '${tls_self_signed_cert.ca.cert_pem}' > ./vault-ca.pem"
   #  }
