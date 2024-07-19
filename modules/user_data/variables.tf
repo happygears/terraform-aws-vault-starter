@@ -45,3 +45,8 @@ variable "vault_log_level" {
   description = "Vault server's log level"
   default     = "info"
 }
+
+variable "environment" {
+  description = "Environment"
+  default     = "dev"
+}

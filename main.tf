@@ -64,6 +64,7 @@ module "user_data" {
   vault_version               = var.vault_version
   snapshots_bucket_id         = var.enable_snapshots ? module.snapshots.s3_bucket_id : ""
   vault_log_level             = var.vault_log_level
+  environment                 = var.environment
 }
 
 module "vm" {
