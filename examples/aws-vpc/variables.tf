@@ -48,7 +48,7 @@ variable "private_subnet_tags" {
 variable "public_subnet_tags" {
   type        = map(string)
   description = "Tags for public subnets. Be sure to provide these tags to the Vault installation module."
-  default = null
+  default     = null
 }
 
 variable "public_subnet_cidrs" {
